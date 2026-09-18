@@ -1,5 +1,6 @@
 import { Page, Locator } from "@playwright/test";
 export class TextBoxPage {
+    //Khai báo
     readonly page: Page;
     readonly fullNameLocator: Locator;
     readonly emailLocator: Locator;
@@ -9,6 +10,7 @@ export class TextBoxPage {
     readonly emailResultLocator: Locator;
     readonly currentAddressResultLocator: Locator;
     readonly permanentAddressResultLocator: Locator;
+    //Khởi tạo
     constructor(page: Page) {
         this.page = page;
         this.fullNameLocator = page.locator('#userName');
@@ -23,6 +25,7 @@ export class TextBoxPage {
     async goto() {
         await this.page.goto('text-box');
     }
+    //Hàm nhập dữ liệu vào các trường và click submit
     async inputData(fullName: string|null, email: string|null, currentAddress: string|null, permanentAddress: string|null) {
         await this.page.waitForTimeout(5000);
         await this.fullNameLocator.fill(fullName || '');

@@ -1,4 +1,4 @@
-import * as fs from "fs";
+import * as fs from 'fs';
 import { parse } from "csv-parse/sync";
 
 export function readDataFromCSV(filePath: string): Record<string, string>[] {
