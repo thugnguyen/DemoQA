@@ -16,11 +16,11 @@ export class CheckBoxPage {
         return false;
     }
 
-    async getLocatorByXpath (label: string, xpath: string): Promise<Locator> {
-        const dynamicXpath: string = xpath.replace('@param', label);
-        const locator: Locator = this.page.locator(`xpath=${dynamicXpath}`);
-        return locator;
-    }
+    // async getLocatorByXpath (label: string, xpath: string): Promise<Locator> {
+    //     const dynamicXpath: string = xpath.replace('@param', label);
+    //     const locator: Locator = this.page.locator(`xpath=${dynamicXpath}`);
+    //     return locator;
+    // }
 
     async getTextResult(locators: Locator): Promise<string> {
         let result: string = '';
