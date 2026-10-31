@@ -111,4 +111,21 @@ export class TestBase{
     async getIframeText(page: Page, iframeSelector: string, elementSelector: string): Promise<string>{
         return await page.frameLocator(iframeSelector).locator(elementSelector).textContent() || '';
     }
+
+    //Nested Frame
+    async getNestedIframeText(page: Page, iframeSelectors: string[], elementSelector?: string ): Promise<string> {
+        let frame = page.frameLocator(iframeSelectors[0]);
+        for (let i = 1; i < iframeSelectors.length; i++) {
+            frame = frame.frameLocator(iframeSelectors[i]);
+        }
+        if (elementSelector) {
+            return await frame.locator(elementSelector).textContent() || '';
+        }
+        return await frame.locator('body').innerText() || '';
+    }
+
+    //Modal Dialogs
+    async getModalText(page: Page, modalSelector: string, elementSelector: string): Promise<string> {
+        return await page.locator(modalSelector).locator(elementSelector).textContent() || '';
+    }
 }
